@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Review System</title>
+</head>
+
+<body>
+    {% block body %}
+    <h1 class="heading">Customer Review Website</h1>
+    <div class="review-form">
+        <form method="POST" action="/">
+            {{ form.hidden_tag() }}
+            <fieldset>
+                <div class="form-group">
+                    {{ form.fname.label(class="form-control-label") }} {{ form.fname(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.product.label(class="form-control-label") }} {{ form.product(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.review.label(class="form-control-label") }} {{ form.review(class="form-control") }}
+                </div>
+            </fieldset>
+            {{form.submit(class="btn btn-outline-info")}}
+        </form>
+    </div>
+    <div class="reviews">
+        <h2>Reviews</h2>
+        {% for i in reviews.index %}
+        <div class="review">
+            <h3>{{ reviews['Product Name'][i] }}</h3>
+            <small>{{ reviews['Name'][i] }}</small>
+            <p>{{ reviews['Review'][i] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    {% endblock %}
+</body>
+
+</html>
